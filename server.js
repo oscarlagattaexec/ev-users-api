@@ -25,7 +25,7 @@ server.connection({
 // and creating new routes with that configuration here
 server.route(require('./api/users/routes/get_user'));
 server.route(require('./api/users/routes/get_users'));
-
+server.route(require('./api/users/routes/post_user'));
 // Starting the server is as simple as calling
 // server.start. We can throw an error if something
 // goes wrong

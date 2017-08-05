@@ -11,7 +11,8 @@ module.exports = [
         roles: [
             'ADMIN',
             'USER1'
-        ]
+        ],
+        avatar: ""
 
     },
     {
@@ -25,7 +26,8 @@ module.exports = [
             'ADMIN',
             'USER1',
             'USER2'
-        ]
+        ],
+        avatar: ""
     },
     {
         id: 3,
@@ -37,7 +39,8 @@ module.exports = [
         roles: [
             'USER1',
             'USER2'
-        ]
+        ],
+        avatar: ""
     },
     {
         id: 4,
@@ -50,7 +53,8 @@ module.exports = [
             'USER1',
             'USER2',
             'USER2'
-        ]
+        ],
+        avatar: ""
     },
     {
         id: 5,
@@ -62,7 +66,8 @@ module.exports = [
         roles: [
             'ADMIN',
             'USER2'
-        ]
+        ],
+        avatar: ""
     },
     {
         id: 6,
@@ -74,7 +79,8 @@ module.exports = [
         roles: [
             'ADMIN',
             'USER1'
-        ]
+        ],
+        avatar: ""
     },
     {
         id: 7,
@@ -82,11 +88,12 @@ module.exports = [
         userName: 'oscar.lagatta',
         email: 'oscar.lagatta@execview.com',
         twitter: '@oscarlagatta',
-        github: 'oscar',
+        github: 'oscarlagatta',
         roles: [
             'ADMIN',
             'USER1',
             'USER2'
-        ]
+        ],
+        avatar: ""
     }
 ]
