@@ -1,5 +1,6 @@
 'use strict';
 
+const Boom = require('boom');
 const usersData = require('../../../data/users');
 
 const query = require('./../queries/users');
@@ -18,7 +19,7 @@ module.exports = {
         );
         
         if(!user){
-            return reply({message: 'user not found'});
+            return reply(Boom.notFound('User not found'));
         }
 
         user.avatar = request.pre.image;

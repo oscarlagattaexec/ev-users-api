@@ -1,5 +1,6 @@
 'use strict';
 
+const Boom = require("boom");
 const usersData = require('../../../data/users');
 const sortBy = require('lodash').sortBy;
 
@@ -8,6 +9,10 @@ module.exports = {
     path: '/api/users',
     config: {
         handler: (request, reply) => {
+
+            if (!usersData.length){
+                return reply(Boom.notFound('No users found'));
+            }
 
             // specify the data I want
             const usersReducedData = usersData.map(

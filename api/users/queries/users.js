@@ -1,5 +1,7 @@
 'use strict';
 
+const Boom = require("boom");
+
 // library provided for the hapi ecosystem and is 
 // http client;
 const Wreck = require('wreck');
@@ -16,10 +18,11 @@ const verifyUniqueUser = (request, reply) => {
     user => user.name === name
   );
   if (existingUser) {
-    return reply({ message: 'user exists!' });
+    return reply(Boom.badRequest('user already exists!'));
   }
 
   return reply();
+
 };
 
 // We need to create a userName for the user.
@@ -38,10 +41,14 @@ const createUserName = (request, reply) => {
 
 const getGithubImage = (request, reply) => {
   const userName = request.params.userName;
+
+  const currentUser = usersData.find( user=> user.userName == userName);
+  if (!currentUser)
+    return reply(Boom.badRequest("User doesn\'t exist!"));
+
   const githubUser = usersData.find(
     user => user.userName == userName
   ).github;
-  console.log('githubub', githubUser);
 
   if (!githubUser) return reply();
   
@@ -54,7 +61,10 @@ const getGithubImage = (request, reply) => {
     `https://api.github.com/users/${githubUser}`,
     options,
     (error, response, payload) => {
-       reply(payload.avatar_url);
+       if (error) {
+          return reply(Boom.badRequest('Error getting github image'))
+       }
+       return reply(payload.avatar_url);
     }
   );
 };
@@ -64,4 +74,3 @@ module.exports = {
     createUserName,
     getGithubImage
 }
-
