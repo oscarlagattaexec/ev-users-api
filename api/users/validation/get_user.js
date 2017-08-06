@@ -9,7 +9,11 @@ const paramsValidator = Joi.object({
     // but for the sake of demo
     // but we want we can use a Regex, saying that
     // the parameter needs to be 'firstname.lastname'
-    userName: Joi.string().required()
+    userName: Joi
+                .string()
+                .required()
+                .description('User Name')
+                .example('john.doe')
 });
 
 module.exports = { 

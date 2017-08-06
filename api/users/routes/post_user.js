@@ -6,7 +6,7 @@ const query = require('./../queries/users');
 const payloadValidator = require('./../validation/post_user').payloadValidator;
 module.exports = {
   method: 'POST',
-  path: '/api/users',
+  path: '/api/v1/users',
   config: {
     tags: ['api'], // ADD THIS TAG FOR SWAGGER
     validate: {
@@ -28,6 +28,7 @@ module.exports = {
 
       console.log('username : ', request.pre.userName);
       reply(usersData.find(item => item.userName == request.pre.userName));
-    }
+    }, // handler
+    description: 'This endpoint will create a new user'
   }
 };

@@ -1,6 +1,8 @@
 'use strict';
 
 const Boom = require("boom");
+const Joi = require("joi");
+
 const usersData = require('../../../data/users');
 const sortBy = require('lodash').sortBy;
 
@@ -8,7 +10,7 @@ const queryValidator = require('./../validation/get_users').queryValidator;
 
 module.exports = {
     method: 'GET',
-    path: '/api/users',
+    path: '/api/v1/users',
     config: {
         validate: {
             query: queryValidator
@@ -46,6 +48,7 @@ module.exports = {
             }
             
             reply(sortData(usersReducedData, sortDirection, sortKey));
-        }
+        }, // handler
+        description: 'This endpoint will get all the users'
     }
 }
