@@ -8,6 +8,7 @@ module.exports = {
   method: 'POST',
   path: '/api/users',
   config: {
+    tags: ['api'], // ADD THIS TAG FOR SWAGGER
     validate: {
             payload: payloadValidator
     },

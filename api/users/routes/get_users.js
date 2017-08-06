@@ -13,6 +13,7 @@ module.exports = {
         validate: {
             query: queryValidator
         },
+        tags: ['api'], // ADD THIS TAG FOR SWAGGER
         handler: (request, reply) => {
             if (!usersData.length){
                 return reply(Boom.notFound('No users found'));
