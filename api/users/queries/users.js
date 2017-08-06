@@ -20,9 +20,7 @@ const verifyUniqueUser = (request, reply) => {
   if (existingUser) {
     return reply(Boom.badRequest('user already exists!'));
   }
-
   return reply();
-
 };
 
 // We need to create a userName for the user.

@@ -3,10 +3,14 @@
 const usersData = require('./../../../data/users');
 const query = require('./../queries/users');
 
+const payloadValidator = require('./../validation/post_user').payloadValidator;
 module.exports = {
   method: 'POST',
   path: '/api/users',
   config: {
+    validate: {
+            payload: payloadValidator
+    },
     pre: [
       { method: query.verifyUniqueUser },
       { method: query.createUserName, assign: 'userName' }

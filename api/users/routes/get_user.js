@@ -3,12 +3,16 @@
 const Boom = require('boom');
 const usersData = require('../../../data/users');
 
-const query = require('./../queries/users');
+const paramsValidator = require('./../validation/get_user').paramsValidator;
 
+const query = require('./../queries/users');
 module.exports = {
     method: 'GET',
     path: '/api/users/{userName}',
     config: {
+    validate: {
+        params: paramsValidator
+    },
     pre: [
       { method: query.getGithubImage, assign: 'image' },
     ]

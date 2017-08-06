@@ -4,12 +4,16 @@ const Boom = require("boom");
 const usersData = require('../../../data/users');
 const sortBy = require('lodash').sortBy;
 
+const queryValidator = require('./../validation/get_users').queryValidator;
+
 module.exports = {
     method: 'GET',
     path: '/api/users',
     config: {
+        validate: {
+            query: queryValidator
+        },
         handler: (request, reply) => {
-
             if (!usersData.length){
                 return reply(Boom.notFound('No users found'));
             }
