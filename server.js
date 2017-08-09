@@ -73,6 +73,9 @@ server.route(require('./api/users/routes/get_user'));
 server.route(require('./api/users/routes/get_users'));
 server.route(require('./api/users/routes/post_user'));
 server.route(require('./api/images/routes/get_image'));
+server.route(require('./api/pdf/routes/get_pdf_listing'));
+server.route(require('./api/pdf/routes/get_pdf'));
+
 
 // Starting the server is as simple as calling
 // server.start. We can throw an error if something

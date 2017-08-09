@@ -5,6 +5,8 @@ const usersData = require('../../../data/users');
 
 const paramsValidator = require('./../validation/get_user').paramsValidator;
 
+const HtmlPdf = require("html-pdf-chrome");
+
 const query = require('./../queries/users');
 module.exports = {
     method: 'GET',
@@ -19,7 +21,7 @@ module.exports = {
             let user = usersData.find(
                 user => user.userName === request.params.userName
             );
-            
+         
             if(!user){
                 return reply(Boom.notFound('User not found'));
             }
