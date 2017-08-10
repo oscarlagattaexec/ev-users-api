@@ -10,7 +10,8 @@ const path = require('path');
 const getPdfFileName = (request, reply) => {
 
     const url = request.query.url;   
-    const pathFile = path.join(__dirname, 'public')
+    const pathFile = path.join(process.cwd(), 'public')
+
     // PDF page options
     const options = {
         printOptions: {
@@ -27,7 +28,7 @@ const getPdfFileName = (request, reply) => {
         .create(url, options)
         .then((pdf) => {
             let pdfFileName = generateUUID();
-            pdf.toFile(`.\\public\\${pdfFileName}.pdf`);
+            pdf.toFile(`${pathFile}\\${pdfFileName}.pdf`);
             return `${pdfFileName}.pdf`;
         })
         .then(pdfFileName => reply(pdfFileName));

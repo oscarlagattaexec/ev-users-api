@@ -5,6 +5,7 @@ const Boom = require('boom');
 const queryValidator = require('./../validation/get_pdf').queryValidator;
 
 const query = require('./../queries/get_pdf');
+const path =  require('path');
 
 module.exports = {
     method: 'GET',
@@ -20,11 +21,13 @@ module.exports = {
                 return reply(Boom.notFound('pdf file not generated'));
             }
 
-            console.log(request.pre.fileName);
+            const pathFile = path.join(process.cwd(), 'public');
+            console.log(`${pathFile}\\${request.pre.fileName}`);
 
-            reply({
-                message: 'pdf generated'
-            });
+            reply.file(`${pathFile}\\${request.pre.fileName}`);
+            // reply({
+            //     message: 'pdf generated'
+            // });
         }, // handler
         description: 'This endpoint will get a pdf file'
     } 
